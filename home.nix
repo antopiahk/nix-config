@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.username = "eksno";
-  home.homeDirectory = "/home/eksno";
+  home.username = "jorgelewis";
+  home.homeDirectory = "/home/jorgelewis";
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -102,8 +102,8 @@
     };
     git = {
       enable = true;
-      userName = "Jonas Lindberg";
-      userEmail = "eksno@protonmail.com";
+      userName = "Jorge Lewis";
+      userEmail = "antopiahk@gmail.com";
       delta = {
         enable = true;
         options = {
@@ -124,7 +124,7 @@
         branch.autosetuprebase = "always";
         color.ui = true;
         core.askPass = ""; # needs to be empty to use terminal for ask pass
-        github.user = "eksno";
+        github.user = "antopiahk";
         push.default = "tracking";
         init.defaultBranch = "alpha";
       };
