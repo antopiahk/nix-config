@@ -22,9 +22,6 @@
   
 
   programs = {
-    protonvpn-gui = {
-      enable = true;
-      };
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
@@ -208,7 +205,9 @@
     obsidian
     discord-canary
     gimp
-    protonvpn-gui
+    whatsapp-for-linux
+    protonvpn-cli
+    protonvpn-cli_2
   ];
 
   xdg = {

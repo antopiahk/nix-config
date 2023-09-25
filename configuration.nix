@@ -96,7 +96,6 @@
     podman-compose
     docker
     docker-compose
-    protonvpn-gui
   ];
 
   # Set default editor to neovim
@@ -127,7 +126,7 @@
 
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "eksno";
+  services.xserver.displayManager.autoLogin.user = "jorgelewis";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
