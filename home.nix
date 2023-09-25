@@ -102,7 +102,7 @@
     };
     git = {
       enable = true;
-      userName =  "Lindberg";
+      userName =  "antopiahk";
       userEmail = "antopiahk@gmail.com";
       delta = {
         enable = true;
@@ -206,8 +206,6 @@
     discord-canary
     gimp
     whatsapp-for-linux
-    protonvpn-cli
-    protonvpn-cli_2
   ];
 
   xdg = {
