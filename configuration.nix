@@ -15,22 +15,10 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "Europe/Oslo";
+  time.timeZone = "Asia/Hong_Kong";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "ja_JP.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "ja_JP.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "ja_JP.UTF-8";
-  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -42,7 +30,7 @@
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
-    xkbVariant = "dvp";
+   
   };
 
   # Enable CUPS to print documents.
@@ -69,9 +57,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.eksno = {
+  users.users.jorgelewis= {
     isNormalUser = true;
-    description = "Jonas Lindberg";
+    description = "Jorge Lewis";
     extraGroups = [ "networkmanager" "wheel" ];
   };
   
@@ -108,6 +96,7 @@
     podman-compose
     docker
     docker-compose
+    protonvpn-gui
   ];
 
   # Set default editor to neovim

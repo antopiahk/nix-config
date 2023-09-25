@@ -22,6 +22,9 @@
   
 
   programs = {
+    protonvpn-gui = {
+      enable = true;
+      };
     vscode = {
       enable = true;
       extensions = with pkgs.vscode-extensions; [
@@ -102,7 +105,7 @@
     };
     git = {
       enable = true;
-      userName = "Jorge Lewis";
+      userName =  Lindberg";
       userEmail = "antopiahk@gmail.com";
       delta = {
         enable = true;
@@ -124,7 +127,7 @@
         branch.autosetuprebase = "always";
         color.ui = true;
         core.askPass = ""; # needs to be empty to use terminal for ask pass
-        github.user = "antopiahk";
+        github.user = "jorgelewis";
         push.default = "tracking";
         init.defaultBranch = "alpha";
       };
@@ -205,6 +208,7 @@
     obsidian
     discord-canary
     gimp
+    protonvpn-gui
   ];
 
   xdg = {
