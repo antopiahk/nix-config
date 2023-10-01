@@ -58,6 +58,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  security.sudo.wheelNeedsPassword = false;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jorgelewis= {
     isNormalUser = true;
@@ -98,10 +100,26 @@
     podman-compose
     docker
     docker-compose
+     (python311.withPackages(ps: with ps; [ numpy pillow toolz black markdown matplotlib 
+]))
   ];
 
   # Set default editor to neovim
   environment.variables.EDITOR = "neovim";
+
+  # https://nixos.wiki/wiki/Environment_variables
+  environment.sessionVariables = rec {
+  XDG_CACHE_HOME  = "$HOME/.cache";
+  XDG_CONFIG_HOME = "$HOME/.config";
+  XDG_DATA_HOME   = "$HOME/.local/share";
+  XDG_STATE_HOME  = "$HOME/.local/state";
+
+  # Not officially in the specification
+  XDG_BIN_HOME    = "$HOME/.local/bin";
+  PATH = [ 
+    "${XDG_BIN_HOME}"
+  ];
+  };
 
   # Containers with podman
   virtualisation = {
@@ -147,14 +165,13 @@
   # generation contains a different kernel, initrd or kernel modules.
   system.autoUpgrade.allowReboot = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
+   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
+  programs = {
+    fish = {
+      enable = true;
+    };
+  };
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
