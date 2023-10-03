@@ -11,6 +11,43 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+ # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+    powerManagement.enable = false;
+    # Fine-grained power management. Turns off GPU when not in use.
+    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+    powerManagement.finegrained = false;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of 
+    # supported GPUs is at: 
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Only available from driver 515.43.04+
+    # Do not disable this unless your GPU is unsupported or if you have a good reason to.
+    open = true;
+
+    # Enable the Nvidia settings menu,
+	# accessible via `nvidia-settings`.
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -100,27 +137,22 @@
     podman-compose
     docker
     docker-compose
-     (python311.withPackages(ps: with ps; [ numpy pillow toolz black markdown matplotlib 
-]))
+     (python311.withPackages(ps: with ps; [ numpy pillow toolz black markdown matplotlib ]))
   ];
 
   # Set default editor to neovim
   environment.variables.EDITOR = "neovim";
 
+    # Set fish shell environment
+  environment.shells = with pkgs; [ fish ];
+
   # https://nixos.wiki/wiki/Environment_variables
   environment.sessionVariables = rec {
-  XDG_CACHE_HOME  = "$HOME/.cache";
-  XDG_CONFIG_HOME = "$HOME/.config";
-  XDG_DATA_HOME   = "$HOME/.local/share";
-  XDG_STATE_HOME  = "$HOME/.local/state";
-
-  # Not officially in the specification
-  XDG_BIN_HOME    = "$HOME/.local/bin";
-  PATH = [ 
-    "${XDG_BIN_HOME}"
-  ];
+    d = "/run/media/jorgelewis/Hard Drive";
+    PATH = [
+    "${d}"
+    ];
   };
-
   # Containers with podman
   virtualisation = {
     podman = {
@@ -167,7 +199,7 @@
 
    # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  programs = {
+  programs =  {
     fish = {
       enable = true;
     };
@@ -190,5 +222,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "unstable"; # Did you read the comment?
+ 
 
 }

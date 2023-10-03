@@ -7,7 +7,7 @@
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  # Bootloader. https://nixos.wiki/wiki/Dual_Booting_NixOS_and_Windows
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.supportedFilesystems = ["ntfs"];

@@ -207,6 +207,8 @@
     discord-canary
     gimp
     whatsapp-for-linux
+    spotify
+    woeusb
   ];
 
   xdg = {
